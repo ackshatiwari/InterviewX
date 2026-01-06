@@ -16,14 +16,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
+//index
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
+
+//createbot.html
 app.get('/createbot.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'createbot.html'));
 });
 
+//create bot with form data
 app.post('/create-bot', async (req, res) => {
     const botConfig = req.body;
     console.log('Received bot configuration:', botConfig);
@@ -38,6 +41,8 @@ app.post('/create-bot', async (req, res) => {
     res.status(200).json({ message: 'Bot created successfully'});
 });
 
+
+//listen to server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
