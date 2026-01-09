@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InterviewerX - Start Interview</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Your Interview</h1>
+        
+        <div id="codeEntry" class="interview-section">
+            <h2>Enter Your Interview Code</h2>
+            <p>Please enter the 6-digit code provided by your recruiter</p>
+            <input type="text" id="interviewCode" maxlength="6" pattern="[0-9]{6}" placeholder="000000">
+            <button id="startInterview">Start Interview</button>
+            <div id="errorMessage" class="error-message"></div>
+        </div>
+        <div id="interviewInterface" class="interview-section" style="display: none;">
+            <div id="botInfo">
+                <h2 id="jobTitle"></h2>
+                <p id="roleInfo"></p>
+            </div>
+
+            <div id="resumeUpload" class="upload-section">
+                <h3>Upload Your Resume</h3>
+                <input type="file" id="resumeFile" accept=".pdf,.doc,.docx">
+                <button id="uploadResume">Upload Resume</button>
+            </div>
+
+            <div id="audioControls" class="audio-section">
+                <h3>Audio Test</h3>
+                <button id="testMicrophone">Test Microphone</button>
+                <div id="audioLevel" class="audio-level"></div>
+            </div>
+
+            <div id="interviewChat" class="chat-section" style="display: none;">
+                <div id="chatMessages" class="chat-messages"></div>
+                <div id="currentQuestion" class="current-question"></div>
+                
+                <div class="recording-controls">
+                    <button id="recordButton" class="record-btn">
+                            Hold to Record
+                    </button>
+                    <div id="recordingStatus" class="recording-status"></div>
+                </div>
+                
+                <button id="submitAnswer" style="display: none;">Submit Answer</button>
+                <div id="transcription" class="transcription"></div>
+            </div>
+
+            <div id="scoreDisplay" class="score-section" style="display: none;">
+                <h2>Interview Complete!</h2>
+                <div class="score-card">
+                    <h3>Your Score: <span id="finalScore"></span>/100</h3>
+                    <div id="feedbackSection">
+                        <h4>Strengths:</h4>
+                        <ul id="strengths"></ul>
+                        <h4>Areas for Improvement:</h4>
+                        <ul id="improvements"></ul>
+                        <p id="overallFeedback"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="interview.js"></script>
+</body>
+</html>

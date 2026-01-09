@@ -1,4 +1,4 @@
-//FRONT-END JAVASCRIPT FILE
+// script.js
 const form = document.getElementById('createBot');
 if (form) {
     form.addEventListener('submit', async (e) => {
@@ -24,6 +24,16 @@ if (form) {
             },
             body: JSON.stringify(botConfig)
         });
+        
+        const result = await response.json();
+        
+        if (result.interviewCode) {
+            alert(`Bot created successfully!\n\nInterview Code: ${result.interviewCode}\n\nShare this code with candidates to start their interview.`);
+            // Clear the form after success
+            form.reset();
+        } else {
+            alert('Error creating bot. Please try again.');
+        }
 
     });
 }

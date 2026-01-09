@@ -12,7 +12,11 @@
   "type": "module",
   "description": "",
   "dependencies": {
+    "@google-cloud/text-to-speech": "^6.4.0",
+    "@google/generative-ai": "^0.24.1",
     "@supabase/supabase-js": "^2.89.0",
+    "body-parser": "^2.2.1",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "http": "^0.0.1-security",
