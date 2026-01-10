@@ -6,6 +6,10 @@ node_modules/
 .env.local
 .env.production
 
+#google
+google_json_key/*
+!google_json_key/.gitignore
+
 # Logs
 *.log
 

@@ -34,6 +34,14 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+app.get('/homepage.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'homepage.html'));
+});
+app.get('/hirer.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'hirer.html'));
+});
+
+
 //createbot.html
 app.get('/createbot.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'createbot.html'));
