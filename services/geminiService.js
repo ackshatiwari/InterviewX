@@ -5,14 +5,18 @@ dotenv.config();
 
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
 
-export const generateInterviewQuestions = async (jobTitle, jobDescription, numberOfQuestions = 5) => {
+export const generateInterviewQuestions = async (jobTitle, jobDescription, numberOfQuestions = 5, topicWeightage) => {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
     
     const prompt = `
       You are an expert recruiter. Generate ${numberOfQuestions} interview questions for a ${jobTitle} position.
       
       Job Description: ${jobDescription}
+
+      Here are the topics and their weightage to consider: ${topicWeightage}. If there is no crresponding weitage, 
+      cover all these topics and weigh them equally.
+
       
       Please provide:
       1. A mix of technical and behavioral questions
@@ -45,7 +49,7 @@ export const generateInterviewQuestions = async (jobTitle, jobDescription, numbe
 
 export const evaluateAnswer = async (question, answer, jobContext) => {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
     
     const prompt = `
       Evaluate this interview answer on a scale of 1-100.

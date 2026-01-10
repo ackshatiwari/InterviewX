@@ -9,6 +9,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import supabase from './lib/supabase.js';
 import { generateInterviewQuestions, evaluateAnswer } from './services/geminiService.js';
+
 // Use Web Speech API if Google Cloud TTS is not configured
 const useWebSpeech = !process.env.GOOGLE_CLOUD_PROJECT;
 const ttsModule = useWebSpeech 
@@ -31,7 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //index
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'homepage.html'));
 });
 
 app.get('/homepage.html', (req, res) => {
