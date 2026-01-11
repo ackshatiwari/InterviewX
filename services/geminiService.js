@@ -31,6 +31,9 @@ export const generateInterviewQuestions = async (jobTitle, jobDescription, numbe
       2. A mix of technical and behavioral questions
       3. Questions that assess relevant skills
       4. Questions that evaluate cultural fit
+
+      Since this is a remote interview, do not include any questions requiring physical tasks, like
+      whiteboarding or live coding.
       
       Format the response as a JSON array with objects containing:
       - question: the interview question
