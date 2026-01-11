@@ -32,11 +32,11 @@ app.use(express.urlencoded({ extended: true }));
 
 //index
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'homepage.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.get('/homepage.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'homepage.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 app.get('/hirer.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'hirer.html'));
@@ -85,13 +85,13 @@ app.post('/create-bot', async (req, res) => {
 // Gemini API Endpoints
 app.post('/api/generate-questions', async (req, res) => {
     try {
-        const { jobTitle, jobDescription, numberOfQuestions } = req.body;
+        const { jobTitle, jobDescription, numberOfQuestions, topicsWeightage } = req.body;
         
         if (!jobTitle || !jobDescription) {
             return res.status(400).json({ error: 'Job title and description are required' });
         }
         
-        const questions = await generateInterviewQuestions(jobTitle, jobDescription, numberOfQuestions);
+        const questions = await generateInterviewQuestions(jobTitle, jobDescription, numberOfQuestions, topicsWeightage);
         res.json({ success: true, questions });
     } catch (error) {
         console.error('Error generating questions:', error);
@@ -101,13 +101,13 @@ app.post('/api/generate-questions', async (req, res) => {
 
 app.post('/api/evaluate-answer', async (req, res) => {
     try {
-        const { question, answer, jobContext } = req.body;
+        const { question, answer, jobContext, points, topic } = req.body;
         
         if (!question || !answer) {
             return res.status(400).json({ error: 'Question and answer are required' });
         }
         
-        const evaluation = await evaluateAnswer(question, answer, jobContext || '');
+        const evaluation = await evaluateAnswer(question, answer, jobContext || '', points, topic);
         res.json({ success: true, evaluation });
     } catch (error) {
         console.error('Error evaluating answer:', error);
@@ -169,7 +169,7 @@ app.post('/api/validate-code', async (req, res) => {
                 seniorityLevel: bot.seniorityLevel,
                 organization: bot.organization,
                 skills: bot.skills,
-                topicsWeightage: bot.topicsWeightage,
+                topicsWeightage: bot.topicsWeightage || bot.topics_weightage,
                 evaluationCriteria: bot.evaluationCriteria
             }
         });
@@ -217,7 +217,9 @@ app.post('/api/interview-session', async (req, res) => {
                 const evaluation = await evaluateAnswer(
                     data.question,
                     data.answer,
-                    data.jobContext
+                    data.jobContext,
+                    data.points || null,
+                    data.topic || null
                 );
                 
                 res.json({ success: true, evaluation });
