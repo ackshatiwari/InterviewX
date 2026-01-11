@@ -227,9 +227,11 @@ document.getElementById('submitAnswer').addEventListener('click', async () => {
                 botId: currentBot.id,
                 action: 'submit-answer',
                 data: {
-                    question: currentQuestions[currentQuestionIndex].question,
+                    question: currentQuestion.question,
                     answer: answer,
-                    jobContext: `${currentBot.jobTitle} at ${currentBot.organization} - Skills: ${currentBot.skills}`
+                    jobContext: `${currentBot.jobTitle} at ${currentBot.organization} - Skills: ${currentBot.skills}`,
+                    topic: currentQuestion.topic,
+                    points: currentQuestion.points
                 }
             })
         });
