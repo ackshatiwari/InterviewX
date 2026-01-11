@@ -8,54 +8,40 @@
     <title>InterviewerX</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
+    
 </head>
 
 <body>
     <h1>Create Your Interview Bot</h1>
-<!-- 
-    
-Job title
- 
-Seniority level (Intern / Junior / Mid / Senior / Lead)
 
-Role type (Frontend, Backend, Data, PM, etc.)
+    <form action="/create-bot" method="POST" id="createBot">
+        <label for="jobTitle">Job Title:</label>
+        <input type="text" id="jobTitle" name="jobTitle" required><br><br>
 
-Interview duration
+        <label for="seniorityLevel">Seniority Level:</label>
+        <select id="seniorityLevel" name="seniorityLevel" required>
+            <option value="Intern">Intern</option>
+            <option value="Junior">Junior</option>
+            <option value="Mid">Mid</option>
+            <option value="Senior">Senior</option>
+            <option value="Lead">Lead</option>
+        </select><br><br>
 
-Interview goal (screening, deep technical, culture fit)
+        <label for="organization">Organization:</label>
+        <input type="text" id="organization" name="organization" required><br><br>
 
-Topics+Weitghtage (algorithms 40%, system design 30%, behavioral 30%)
+        <label for="skills">Hard/Soft skills required:</label>
+        <input type="text" id="skills" name="skills" required><br><br>
 
-Evaluation Criteria (problem solving, coding style, communication)
+        <label for="topicsWeightage">Topics & Weightage:</label>
+        <input type="text" id="topicsWeightage" name="topicsWeightage" required><br><br>
 
--->
-<form action = "/create-bot" method="POST" id="createBot">
-    <label for="jobTitle">Job Title:</label>
-    <input type="text" id="jobTitle" name="jobTitle" required><br><br>
+        <label for="evaluationCriteria">Evaluation Criteria:</label>
+        <input type="text" id="evaluationCriteria" name="evaluationCriteria" required><br><br>
 
-    <label for="seniorityLevel">Seniority Level:</label>
-    <select id="seniorityLevel" name="seniorityLevel" required>
-        <option value="Intern">Intern</option>
-        <option value="Junior">Junior</option>
-        <option value="Mid">Mid</option>
-        <option value="Senior">Senior</option>
-        <option value="Lead">Lead</option>
-    </select><br><br>
+        <input type="submit" value="Create Bot">
 
-    <label for="organization">Organization:</label>
-    <input type="text" id="organization" name="organization" required><br><br>
-
-    <label for="skills">Hard/Soft skills required:</label>
-    <input type="text" id="skills" name="skills" required><br><br>
-
-    <label for="topicsWeightage">Topics & Weightage:</label>
-    <input type="text" id="topicsWeightage" name="topicsWeightage" required><br><br>
-
-    <label for="evaluationCriteria">Evaluation Criteria:</label>
-    <input type="text" id="evaluationCriteria" name="evaluationCriteria" required><br><br>
-
-    <input type="submit" value="Create Bot">
-
-</form>
+    </form>
 </body>
+
 </html>
