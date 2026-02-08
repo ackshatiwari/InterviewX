@@ -1,7 +1,45 @@
-body{
+body {
     background-color: #0a0a51;
     color: #fff;
     font-family: Montserrat, Arial, sans-serif;
+}
+
+body {
+    background: #202628;
+}
+.loader-line-1 {
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    font-size: 10px;
+    display: none;
+}
+.loader-line-1 > div {
+    background-color: #fff;
+    height: 100%;
+    width: 6px;
+    display: inline-block;
+    animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+.loader-line-1 > div:nth-child(2) {
+    animation-delay: -1.1s;
+}
+.loader-line-1 > div:nth-child(3) {
+    animation-delay: -1.0s;
+}
+.loader-line-1 > div:nth-child(4) {
+    animation-delay: -0.9s;
+}
+.loader-line-1 > div:nth-child(5) {
+    animation-delay: -0.8s;
+}
+@keyframes sk-stretchdelay {
+    0%, 40%, 100% {
+        transform: scaleY(0.4);
+    }
+    20% {
+        transform: scaleY(1.0);
+    }
 }
 
 .container {
@@ -9,6 +47,46 @@ body{
     margin: 0 auto;
     padding: 20px;
 }
+
+#googleJobDiv {
+    margin-bottom: 10px;
+}
+
+#googleJobsList {
+    list-style-type: none;
+    padding: 0;
+    overflow-y: auto;
+    max-height: 300px;
+}
+/* Job card styles */
+.jobs-list {
+    margin-top: 12px;
+}
+.google-jobs-ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 8px;
+}
+.job-card {
+    background-color: #17173a;
+    border: 1px solid #2f2f6a;
+    padding: 12px;
+    border-radius: 8px;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    cursor: pointer;
+}
+.job-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+.job-card.selected {
+    outline: 2px solid #4CAF50;
+}
+.job-title { font-weight: 700; margin-bottom: 4px; color: #fff; }
+.job-company { font-size: 0.95rem; color: #cbd5ff; margin-bottom: 6px; }
+.job-desc { font-size: 0.9rem; color: #d1d5f0; max-height: 6.2em; overflow: hidden; }
 
 .interview-section {
     background-color: #1e1e1e;
@@ -96,9 +174,17 @@ button:hover {
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .audio-level {
@@ -145,13 +231,22 @@ form {
     border-radius: 8px;
 }
 
+/* Layout for createbot page */
+.container { max-width: 1100px; margin: 20px auto; padding: 18px; }
+.columns { display: grid; grid-template-columns: 420px 1fr; gap: 24px; align-items: start; }
+.muted { color: #bfc6ff; font-size: 0.95rem; margin-bottom: 8px; }
+
+@media (max-width: 900px) {
+    .columns { grid-template-columns: 1fr; }
+}
+
 label {
     display: block;
     margin-bottom: 5px;
     color: #aaa;
 }
 
-input[type="text"], 
+input[type="text"],
 select {
     width: 100%;
     padding: 8px;

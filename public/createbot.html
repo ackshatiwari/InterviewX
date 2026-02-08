@@ -8,40 +8,71 @@
     <title>InterviewerX</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
-    
+
 </head>
 
 <body>
-    <h1>Create Your Interview Bot</h1>
+    <div class="container">
+        <h1>Create Your Interview Bot</h1>
 
-    <form action="/create-bot" method="POST" id="createBot">
-        <label for="jobTitle">Job Title:</label>
-        <input type="text" id="jobTitle" name="jobTitle" required><br><br>
+        <div class="columns">
+            <aside class="jobs-column">
+                <div class="loader-line-1" id="loader-line-1">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <h2>Job Sync</h2>
+                <p class="muted">Search Google Jobs to import a job posting and pre-fill this form.</p>
+                <div id="googleJobDiv">
+                    <button id="syncGoogleJobs">Sync with Google Jobs</button>
+                    <form action="/googleJob" method="POST" id="googleJobsForm" style="display: none; margin-top:10px;">
+                        <input type="text" id="googleJobsQuery" name="googleJobsQuery"
+                            placeholder="Enter job title or keywords">
+                        <button type="submit">Fetch Jobs</button>
+                    </form>
+                </div>
 
-        <label for="seniorityLevel">Seniority Level:</label>
-        <select id="seniorityLevel" name="seniorityLevel" required>
-            <option value="Intern">Intern</option>
-            <option value="Junior">Junior</option>
-            <option value="Mid">Mid</option>
-            <option value="Senior">Senior</option>
-            <option value="Lead">Lead</option>
-        </select><br><br>
 
-        <label for="organization">Organization:</label>
-        <input type="text" id="organization" name="organization" required><br><br>
 
-        <label for="skills">Hard/Soft skills required:</label>
-        <input type="text" id="skills" name="skills" required><br><br>
+                <div id="googleJobsList" class="jobs-list"></div>
+            </aside>
 
-        <label for="topicsWeightage">Topics & Weightage:</label>
-        <input type="text" id="topicsWeightage" name="topicsWeightage" required><br><br>
+            <main class="form-column">
+                <form action="/create-bot" method="POST" id="createBot">
+                    <label for="jobTitle">Job Title:</label>
+                    <input type="text" id="jobTitle" name="jobTitle" required><br><br>
 
-        <label for="evaluationCriteria">Evaluation Criteria:</label>
-        <input type="text" id="evaluationCriteria" name="evaluationCriteria" required><br><br>
+                    <label for="seniorityLevel">Seniority Level:</label>
+                    <select id="seniorityLevel" name="seniorityLevel" required>
+                        <option value="" disabled selected>Choose Seniority Level</option>
+                        <option value="Intern">Intern</option>
+                        <option value="Junior">Junior</option>
+                        <option value="Mid">Mid</option>
+                        <option value="Senior">Senior</option>
+                        <option value="Lead">Lead</option>
+                    </select><br><br>
 
-        <input type="submit" value="Create Bot">
+                    <label for="organization">Organization:</label>
+                    <input type="text" id="organization" name="organization" required><br><br>
 
-    </form>
+                    <label for="skills">Hard/Soft skills required:</label>
+                    <input type="text" id="skills" name="skills" required><br><br>
+
+                    <label for="topicsWeightage">Topics & Weightage:</label>
+                    <input type="text" id="topicsWeightage" name="topicsWeightage" required><br><br>
+
+                    <label for="evaluationCriteria">Evaluation Criteria:</label>
+                    <input type="text" id="evaluationCriteria" name="evaluationCriteria" required><br><br>
+
+                    <input type="submit" value="Create Bot">
+
+                </form>
+            </main>
+        </div>
+    </div>
 </body>
 
 </html>
